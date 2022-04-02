@@ -1,0 +1,58 @@
+auth:
+* super user can create new dj users
+* dj can log in
+* dj can change password
+
+dj actions:
+* dj can create a new program (program has instances called "shows")
+* dj can create a new show (instance of a program) for a specific date/time with description text and an audio file
+
+
+Program:
+Title of the Program (eg. NW Orbit)
+DJ alias
+Description text
+
+Show:
+Title
+Date/time (picker)
+Description text
+Audio file
+
+
+Station computer part
+poll api every few minutes for upcoming shows added by djs (see
+above). Download the audio for next unplayed shows. Put each into
+correct location in file system with correct names. Names are
+determined by show name.
+
+
+API routes
+/users/
+* create new user (post) (super user authorization only)
+* user change password (update) (login required)
+* /users/<id> to get user info in json
+
+/programs/
+* post to create (login required)
+* put to update
+* get for all programs
+
+/shows/
+* post to create (login required, uploads file)
+* put to update
+* get for all shows
+
+
+Front End React stuff
+* Splash page (login page) (/) (Splash.js)
+* Home page (for logged in sessions) /home (Home.js)
+* Edit user page (edit own account) /users/update (UserEdit.js0
+* New user (superuser auth required) (/users/new) (UserNew.js)
+* Login (/login) (Login.js)
+* New program (/programs/new) (ProgramNew.js)
+* List shows for progam (/programs/<id>) (Program.js)
+* Update program (/programs/<id>/update) (ProgramUpdate.js)
+* New show (/programs/<id>/shows/new) (ShowNew.js)
+* Update show (/shows/<id>/update) (ShowUpdate.js)
+* Show show (Show.js) (/shows/<id>)
